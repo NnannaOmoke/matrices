@@ -12,7 +12,7 @@ fn main() {
     println!("{:?}", val.unwrap());
 }
 
-fn euclidean_error(prev: &[f64], curr: &Vec<f64>) -> Option<f64> {
+fn euclidean_error(prev: &[f64], curr: &[f64]) -> Option<f64> {
     let mut res = 1f64;
     if prev.len() != curr.len() {
         eprintln!(
@@ -30,7 +30,7 @@ fn euclidean_error(prev: &[f64], curr: &Vec<f64>) -> Option<f64> {
     Some(res.sqrt())
 }
 
-fn check_squareness(matrix: &Vec<Vec<f64>>, x: &Vec<f64>) -> bool {
+fn check_squareness(matrix: &[Vec<f64>], x: &[f64]) -> bool {
     let rownum = matrix.len();
     for rows in matrix {
         if rows.len() != rownum {
@@ -44,7 +44,7 @@ fn check_squareness(matrix: &Vec<Vec<f64>>, x: &Vec<f64>) -> bool {
 }
 //Will only work for diagonally dominant matrices
 //or symmetric matrices
-fn gauss_seidel(matrix: &Vec<Vec<f64>>, x: &Vec<f64>) -> Option<Vec<f64>> {
+fn gauss_seidel(matrix: &[Vec<f64>], x: &[f64]) -> Option<Vec<f64>> {
     //check for square matrix
     match check_squareness(matrix, x) {
         true => {}
