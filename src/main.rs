@@ -12,7 +12,7 @@ fn main() {
     println!("{:?}", val.unwrap());
 }
 
-fn euclidean_error(prev: &Vec<f64>, curr: &Vec<f64>) -> Option<f64> {
+fn euclidean_error(prev: &[f64], curr: &Vec<f64>) -> Option<f64> {
     let mut res = 1f64;
     if prev.len() != curr.len() {
         eprintln!(
@@ -27,7 +27,7 @@ fn euclidean_error(prev: &Vec<f64>, curr: &Vec<f64>) -> Option<f64> {
         res += (current - previous).powi(2);
     }
     //return the sqrt
-    return Some(res.sqrt());
+    Some(res.sqrt())
 }
 
 fn check_squareness(matrix: &Vec<Vec<f64>>, x: &Vec<f64>) -> bool {
@@ -40,7 +40,7 @@ fn check_squareness(matrix: &Vec<Vec<f64>>, x: &Vec<f64>) -> bool {
     if x.len() != matrix.len() {
         return false;
     }
-    return true;
+    true
 }
 //Will only work for diagonally dominant matrices
 //or symmetric matrices
@@ -61,7 +61,7 @@ fn gauss_seidel(matrix: &Vec<Vec<f64>>, x: &Vec<f64>) -> Option<Vec<f64>> {
         for index in 0..matrix_len {
             let mut current = 0f64;
             //the actual calculation of each updated value
-            for indextwo in 0..return_value.len() {
+            for (indextwo, _) in return_value.iter().enumerate(){
                 if indextwo == index {
                     continue;
                 }
@@ -72,7 +72,7 @@ fn gauss_seidel(matrix: &Vec<Vec<f64>>, x: &Vec<f64>) -> Option<Vec<f64>> {
         }
         count += 1;
     }
-    return Some(return_value);
+    Some(return_value)
 }
 
 
