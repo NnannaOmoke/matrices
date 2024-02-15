@@ -42,7 +42,8 @@ fn check_squareness(matrix: &Vec<Vec<f64>>, x: &Vec<f64>) -> bool {
     }
     return true;
 }
-//for diagonally dominant matrices. Guaranteed to work
+//Will only work for diagonally dominant matrices
+//or symmetric matrices
 fn gauss_seidel(matrix: &Vec<Vec<f64>>, x: &Vec<f64>) -> Option<Vec<f64>> {
     //check for square matrix
     match check_squareness(matrix, x) {
@@ -72,4 +73,9 @@ fn gauss_seidel(matrix: &Vec<Vec<f64>>, x: &Vec<f64>) -> Option<Vec<f64>> {
         count += 1;
     }
     return Some(return_value);
+}
+
+
+fn gauss_jordan(_matrix: &[Vec<f64>], _x: &[f64]) -> Option<Vec<f64>>{
+    todo!()
 }
